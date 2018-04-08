@@ -1,4 +1,4 @@
-package com.inonitylab.userslistviewer.di;
+package com.inonitylab.userslistviewer.di.module;
 
 import android.app.Application;
 import android.content.Context;

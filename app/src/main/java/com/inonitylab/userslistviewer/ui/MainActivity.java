@@ -1,7 +1,9 @@
-package com.inonitylab.userslistviewer;
+package com.inonitylab.userslistviewer.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.inonitylab.userslistviewer.R;
 
 public class MainActivity extends AppCompatActivity {
 
