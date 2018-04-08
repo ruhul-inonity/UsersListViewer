@@ -6,4 +6,5 @@ package com.inonitylab.userslistviewer.ui;
 
 public interface IMainPresenter {
     void setView(IMainView mainView);
+    void retrieveAllUserData();
 }
