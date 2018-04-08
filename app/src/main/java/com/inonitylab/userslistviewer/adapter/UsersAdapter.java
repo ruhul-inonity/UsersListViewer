@@ -3,6 +3,7 @@ package com.inonitylab.userslistviewer.adapter;
 import android.content.Context;
 import android.os.CountDownTimer;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,11 +22,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 
 public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.RecyclerViewHolder> {
+    private String TAG = "Clients Adapter";
+    private String MEN_IMAGE_URL = "https://randomuser.me/api/portraits/men/";
+    private String WOMEN_IMAGE_URL = "https://randomuser.me/api/portraits/women/";
+    private String IMAGE_EXTENSION = ".jpg";
     private LayoutInflater layoutInflater;
     private Context context;
-    private final int COUNTDOWN_RUNNING_TIME = 500;
     private List<User> userList;
-    private String TAG = "Clients Adapter";
 
     public UsersAdapter(Context context, List<User> userList) {
         this.layoutInflater = LayoutInflater.from(context);
@@ -44,21 +47,20 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.RecyclerView
 
     @Override
     public void onBindViewHolder(final RecyclerViewHolder holder, final int position) {
+        String imageUrl;
+
         User user = userList.get(position);
         holder.firstName.setText(user.getFirstName());
         holder.lastName.setText(user.getLastName());
         holder.homePhone.setText(user.getPhones().getHome());
         holder.mobile.setText(user.getPhones().getMobile());
-        //Glide.with(context).load(user.getPhoto()).into(holder.circleImageView);
-        //Log.d(TAG, "onBindViewHolder: ......................................... " + client.getName());
 
-           }
-
-    private String validateUrl(String url) {
-        if(!url.startsWith("http://")){
-            url = "http://"+url;
+        if (user.getGender().equals("male")){
+          imageUrl = MEN_IMAGE_URL+user.getPhoto()+IMAGE_EXTENSION;
+        }else{
+            imageUrl = WOMEN_IMAGE_URL+user.getPhoto()+IMAGE_EXTENSION;
         }
-        return url;
+        Glide.with(context).load(imageUrl).into(holder.circleImageView);
     }
 
     @Override
