@@ -3,8 +3,8 @@ package com.inonitylab.userslistviewer;
 import android.app.Application;
 
 import com.inonitylab.userslistviewer.di.component.ApplicationComponent;
+import com.inonitylab.userslistviewer.di.component.DaggerApplicationComponent;
 import com.inonitylab.userslistviewer.di.module.ApplicationModule;
-import com.inonitylab.userslistviewer.di.DaggerApplicationComponent;
 
 /**
  * Created by ruhul on 4/8/18.
