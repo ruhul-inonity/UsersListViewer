@@ -15,7 +15,7 @@ public class MainPresenter implements IMainPresenter {
 
     public MainPresenter(Context context) {
         ((DaggerApp) context).getApplicationComponent().inject(this);
-        //apiService = new ApiClient().getClient(preferencesHelper.getIMEINumber(), preferencesHelper.getMobileNumber()).create(APIService.class);
+        //apiService = new RetrofitApiClient().getClient(preferencesHelper.getIMEINumber(), preferencesHelper.getMobileNumber()).create(APIService.class);
     }
 
     @Override
