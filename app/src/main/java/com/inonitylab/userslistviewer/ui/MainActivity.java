@@ -6,6 +6,8 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.inonitylab.userslistviewer.DaggerApp;
 import com.inonitylab.userslistviewer.R;
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements IMainView {
     IMainPresenter mainPresenter;
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
     private UsersAdapter adapter;
     private List<User> userList;
 
@@ -40,11 +44,13 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         mainPresenter.setView(this);
 
         mainPresenter.retrieveAllUserData();
+        //progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void getAllUserData(UsersDataResponse usersDataResponse) {
-        Log.i(TAG, "getAllUserData: ........... num of user "+usersDataResponse.getUsers().size());
+        progressBar.setVisibility(View.GONE);
+        //Log.i(TAG, "getAllUserData: ........... num of user "+usersDataResponse.getUsers().size());
 
         adapter = new UsersAdapter(MainActivity.this,usersDataResponse.getUsers());
         recyclerView.setHasFixedSize(false);
